@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>database</title>
+</head>
+<body>
+  <form method="post" autocomplete="off" name="google-sheet">
+  	<center><br><br>
+         <h1>Mahanadi Club, Sambalpur</h1><br>
+         <table border="5">	
+            
+             <tr><td><b>Membership Id : </b></td>
+             <td><input type="text" name="Meambership Id"   required="" /></td>
+            </tr>
+            <tr><td><b>ADD amount : </b></td>
+            <td><input type="number" name="ADD amount"   required="" /></td>
+            </tr>
+            <tr><td><b>Redeem amount : </b></td>
+            <td><input type="number" name="Redeem amount"   required="" /></td>
+            </tr>
+           
+           
+         </table>
+         <br><br>
+         <input type="submit" name="submit" value="Submit"/>
+    </center>
+  </form>
+
+  <script type="text/javascript">
+
+
+	  const scriptURL = 'https://script.google.com/macros/s/AKfycbzjqgqcXZHOeRk-4litqMflRWPf8jMmK5rTtIoUor86ou1oNh5xAN8Nl9ufbBC1xTcrKA/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("You have successfully submitted."))
+                .catch(error => console.error('Error!', error.message))
+            })
+  </script>
+</body>
+</html>
